@@ -1,0 +1,20 @@
+version: "3"
+volumes:
+  burh-db-data:
+  burh_data:
+    driver: local
+networks:
+  burh-db-network:
+services:
+  burh-db:
+    image: "postgres"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: burh-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - burh-db-data:/var/lib/postgresql/data
+    networks:
+      - burh-db-network
