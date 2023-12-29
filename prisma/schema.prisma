@@ -25,12 +25,12 @@ enum Discipline {
 }
 
 model SchoolResult {
-  id          String     @id @default(uuid())
+  id          String        @id @default(uuid())
   bimester    Bimester
   discipline  Discipline
-  grades      Decimal
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt()
+  grades      Decimal       @db.Decimal(5, 2)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt()
 
   @@map(name: "school_results")
   @@unique([bimester, discipline], name: "unique_bimester_discipline")
