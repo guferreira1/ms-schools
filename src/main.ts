@@ -7,7 +7,9 @@ import { DatabaseInterceptor } from './common/interceptors/database.interceptor'
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    cors: { origin: 'http://localhost:5173' },
+  });
 
   const config = new DocumentBuilder()
     .setTitle('Schools Microservices')
