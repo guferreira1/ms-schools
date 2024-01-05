@@ -39,7 +39,7 @@ export class SchoolRepository {
   }
 
   async delete(id: string): Promise<void> {
-    this.prisma.schoolResult.delete({
+    await this.prisma.schoolResult.delete({
       where: {
         id,
       },
